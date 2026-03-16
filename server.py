@@ -16,13 +16,14 @@ def main():
     tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     tcp_socket.bind((SERVER_ADDRESS, SERVER_PORT))
     tcp_socket.listen(5)
-    signal.alarm(10)
-    incoming_socket, incoming_address = None, None
-    try:
-        incoming_socket, incoming_address = tcp_socket.accept()
-    except TimeoutError:
-        print("Couldn't find client in time.")
-        return
+    # signal.alarm(10)
+    print("Waiting for connection")
+    incoming_socket, incoming_address = tcp_socket.accept()
+    # try:
+    #     incoming_socket, incoming_address = tcp_socket.accept()
+    # except TimeoutError:
+    #     print("Couldn't find client in time.")
+    #     return
 
 
     while True:
